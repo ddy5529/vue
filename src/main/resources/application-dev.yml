@@ -1,0 +1,103 @@
+ddy:
+   name: ddy
+   appID: wxd5db089fcb11393f
+   appsecret: 9a7dbdbaa4f1363a3b4c6852f4b57176
+#   thisweburi: 127.0.0.1:8950
+   swagger:
+      basePackage: com.ddy.data.vue
+      version: 1.0.0
+      author: ddy
+      blogUrl: https://github.com/ddy5529/MyBolg/issues/1
+      email: 1171148438@qq.com
+      description: 此处为VUE项目的后端接口文档和接口平台
+      title: 基于Spring Boot框架的RESTFUL 接口文档
+      termsOfServiceUrl: https://github.com/ddy5529
+
+Server:
+  port: 8950
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://116.62.155.130:3306/weixin_server?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: uAiqwVwjJ8-i
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  freemarker:
+    prefer-file-system-access: false
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+  devtools:
+    restart:
+      enabled: true
+      exclude: classpath:/templates/**
+      additional-path: src/main/java
+  mvc:
+    dispatch-options-request: true
+  thymeleaf:
+# 禁止浏览器缓存
+    cache: false
+    check-template-location: true
+    encoding: UTF-8
+    mode: HTML5
+    content-type: text/html
+    enabled: true
+    suffix: .html
+restart:
+  include:
+    mapper: /mapper-[\\w-\\.]+jar
+    pagehelper: /pagehelper-[\\w-\\.]+jar
+StandardTemplateModeHandlers:
+  spring:
+    thymeleaf:
+      prefix: classpath:/templates/
+
+#mybatis:
+#  mapperLocations: classpath:mapper/*.xml
+#  typeAliasesPackage: tk.mapper.model
+
+#    mybatis.config：mybatis-config.xml配置文件的路径
+#    mybatis.typeHandlersPackage：扫描typeHandlers的包
+#    mybatis.checkConfigLocation：检查配置文件是否存在
+#    mybatis.executorType：设置执行模式（SIMPLE, REUSE, BATCH），默认为SIMPLE
+
+#mapper:
+#  mappers: com.ddy.data.vue.Mapper
+#  mappers:
+#          - com.ddy.data.vue.Utils.MyMapper
+#  not-empty: false
+#  identity: MYSQL
+
+
+
+logging:
+  file: logs/system.log
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.mybatis: DEBUG
+    org.apache.ibatis: DEBUG
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
