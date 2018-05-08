@@ -1,5 +1,6 @@
 package com.ddy.data.vue.Filter;
 
+import com.ddy.data.vue.Utils.checkString.WebFilterUtils;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -33,7 +34,7 @@ public class CorsFilter implements Filter {
             String uri=request.getRequestURI().toString().trim();
             if (Pattern.matches(".*/user/login", uri)){
                 response.setHeader("Access-Control-Allow-Headers", "content-type");
-            }else if (Pattern.matches(".*/user/info.*", uri)){
+            }else if (WebFilterUtils.needXtoken(uri)){
                 response.setHeader("Access-Control-Allow-Headers", "x-token");
             }else if (Pattern.matches(".*/user/logout.*", uri)){
                 response.setHeader("Access-Control-Allow-Headers", "x-token");

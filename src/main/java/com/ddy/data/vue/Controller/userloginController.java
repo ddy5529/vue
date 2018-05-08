@@ -40,8 +40,6 @@ public class userloginController {
         if (StringUtils.isEmptyString(token)){
             token="this string is null! ";
         }
-        //{"code":20000,"data":{"token":"admin"}}
-        //{code=20000, data={token=zhangsan}}
         return token;
     }
 
